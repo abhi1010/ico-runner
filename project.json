@@ -1,0 +1,99 @@
+{
+  "version":"7",
+  "compilation":{
+    "contracts_source_dirs": ["./contracts"],
+    "import_remappings": [ "./zeppelin=zeppelin" ],
+    "backend": {
+      "$ref": "compilation.backends.SolcAutoBackend"
+    },
+    "backends": {
+      "SolcAutoBackend": {
+        "class": "populus.compilation.backends.SolcAutoBackend",
+        "settings": {
+          "stdin": {
+            "optimizer": {
+              "enabled": true,
+              "runs": 500
+            },
+            "outputSelection": {
+              "*": {
+                "*": ["abi", "metadata"]
+              }
+            }
+          },
+          "command_line_options": {
+            "allow_paths": "/"
+          }
+        }
+      },
+      "SolcCombinedJSON": {
+        "class": "populus.compilation.backends.SolcCombinedJSONBackend",
+        "settings": {
+          "optimize": true,
+          "output_values": [
+            "abi",
+            "bin",
+            "bin-runtime",
+            "metadata"
+          ]
+        }
+      }
+	}	
+  },
+  "chains": {
+    "horton": {
+      "chain": {
+        "class": "populus.chain.ExternalChain"
+      },
+      "web3": {
+        "provider": {
+          "class": "web3.providers.ipc.IPCProvider",
+        "settings": {
+          "ipc_path":"/home/abhishek.pandey/apps/code/githubs/TOKENS/chatq-tokens/chains/horton/chain_data/geth.ipc"
+        }
+       }
+      },
+      "contracts": {
+        "backends": {
+          "Memory": {
+            "$ref": "contracts.backends.Memory"
+          },
+          "ProjectContracts": {
+            "$ref": "contracts.backends.ProjectContracts"
+          },
+          "JSONFile": {
+			  "$ref": "contracts.backends.JSONFile"
+		  },
+		  "TestContracts": {
+			"class": "populus.contracts.backends.testing.TestContractsBackend",
+			"priority": 40
+		  }
+        }
+      }
+    }
+  },
+  "contracts": {
+    "backends": {
+      "JSONFile": {
+        "class": "populus.contracts.backends.filesystem.JSONFileBackend",
+        "priority": 10,
+        "settings": {
+          "file_path": "/home/abhishek.pandey/apps/code/githubs/TOKENS/chatq-tokens/registrar.json"
+        }
+      },
+      "Memory": {
+        "class": "populus.contracts.backends.memory.MemoryBackend",
+        "priority": 50
+      },
+      "ProjectContracts": {
+        "class": "populus.contracts.backends.project.ProjectContractsBackend",
+        "priority": 20
+      },
+      "TestContracts": {
+        "class": "populus.contracts.backends.testing.TestContractsBackend",
+        "priority": 40
+      }
+    }
+  }
+}
+
