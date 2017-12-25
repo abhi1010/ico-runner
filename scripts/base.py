@@ -49,7 +49,7 @@ if CHAIN == 'rinkeby':
 if CHAIN == 'horton':
     print('Setting horton chain values for accounts')
     FIRST = OWNER = "0x54bc57802112ec0b3d2fc902d2b9715d260eeac0"
-    SECOND = '0x81db1193334d2cc625418ca319dd77e4dc068b95'
+    SECOND = '0x5e19f28296abd74e5bd23e241842ee6836ef5f5d'
 
 # FIRST = OWNER = "0x9f04eD4418526e527c577D02Af0CaCAC1128DAf7"
 
