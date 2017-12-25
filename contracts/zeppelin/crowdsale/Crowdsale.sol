@@ -65,6 +65,12 @@ contract Crowdsale {
     buyTokens(msg.sender);
   }
 
+  // fallback function can be used to buy tokens
+  function buy() public payable {
+    buyTokens(msg.sender);
+  }
+
+
   // low level token purchase function
   function buyTokens(address beneficiary) public payable {
     require(beneficiary != address(0));
