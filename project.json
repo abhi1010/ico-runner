@@ -2,7 +2,7 @@
   "version":"7",
   "compilation":{
     "contracts_source_dirs": ["./contracts"],
-    "import_remappings": [ "./zeppelin=zeppelin" ],
+    "import_remappings": [ "" ],
     "backend": {
       "$ref": "compilation.backends.SolcAutoBackend"
     },
@@ -49,7 +49,7 @@
         "provider": {
           "class": "web3.providers.ipc.IPCProvider",
         "settings": {
-          "ipc_path":"/home/abhishek.pandey/apps/code/githubs/TOKENS/chatq-tokens/chains/horton/chain_data/geth.ipc"
+          "ipc_path":"/home/abhishek.pandey/apps/code/githubs/TOKENS/chatq-tokens-2/chains/horton/chain_data/geth.ipc"
         }
        }
       },
@@ -78,7 +78,7 @@
         "class": "populus.contracts.backends.filesystem.JSONFileBackend",
         "priority": 10,
         "settings": {
-          "file_path": "/home/abhishek.pandey/apps/code/githubs/TOKENS/chatq-tokens/registrar.json"
+          "file_path": "/home/abhishek.pandey/apps/code/githubs/TOKENS/chatq-tokens-2/registrar.json"
         }
       },
       "Memory": {
