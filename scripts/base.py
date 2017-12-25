@@ -1,4 +1,14 @@
 # WARNING: TESTRPC VERSION SHOULD BE 4.1.3
+import logging
+
+# logging.basicConfig(level=logging.DEBUG, format='%(relativeCreated)6d %(threadName)s %(message)s')
+logging.basicConfig(
+    level=logging.DEBUG,
+    format=
+    '%(asctime)s %(filename)s/%(funcName)s %(name)-12s %(levelname)-8s %(message)s',
+    datefmt='%m-%d %H:%M',
+    filename='/tmp/tokens.log',
+    filemode='w')
 
 print('start')
 # Which network we deployed our contract
@@ -8,7 +18,7 @@ print('start')
 # CHAIN = "testrpc"
 CHAIN = "horton"
 
-PROJECT_DIR = '/home/abhishek.pandey/apps/code/githubs/TOKENS/chatq-tokens'
+PROJECT_DIR = '/home/abhishek.pandey/apps/code/githubs/TOKENS/chatq-tokens-2'
 
 FIRST = OWNER = "0x7a4216b955f00f90cb23efe2796291309f11224b"
 SECOND = SECOND_ACCOUNT = RECEIVER = "0x708a15c474a5e704f9a0471cc85f362a2d9fcc8d"
@@ -21,16 +31,12 @@ EIGHT = "0x0c8788170aee8073c239edff1feea8e8e4463ccf"
 NINTH = "0x72e663d65a5d69beaa39617bbbb0b161e5f2dc86"
 TENTH = "0x337c6f220d5e07eb43deae99cb3747f67498adfb"
 
-
 # FIRST = OWNER = "0xa5a5ae854513273e397aecc4c98776594d63db1a"
-
 
 # ropsten values
 if CHAIN == 'ropsten':
     FIRST = OWNER = "0x7DB7BC71d50a1b9d79F147b98B76947ADa49Fc5D"
     SECOND = SECOND_ACCOUNT = RECEIVER = "0x360f19F4c854e4fA07b0346825bE10389f3987d9"
-
-
 
 # rinkeby values
 if CHAIN == 'rinkeby':
@@ -39,23 +45,21 @@ if CHAIN == 'rinkeby':
 
 # --------------------------------------------------------
 
-
 # horton values
 if CHAIN == 'horton':
     print('Setting horton chain values for accounts')
-    FIRST = OWNER = "0xfd88a50961c0257b91f151772846cadfe8be5e08"
+    FIRST = OWNER = "0x54bc57802112ec0b3d2fc902d2b9715d260eeac0"
     SECOND = '0x81db1193334d2cc625418ca319dd77e4dc068b95'
 
 # FIRST = OWNER = "0x9f04eD4418526e527c577D02Af0CaCAC1128DAf7"
 
-ACCOUNTS = [FIRST, SECOND, THIRD, FOURTH, FIFTH,
-           SIXTH, SEVENTH, EIGHT, NINTH, TENTH]
-
-
-
+ACCOUNTS = [
+    FIRST, SECOND, THIRD, FOURTH, FIFTH, SIXTH, SEVENTH, EIGHT, NINTH, TENTH
+]
 
 import pprint
 pp = pprint.PrettyPrinter(indent=10, depth=3)
+
 
 def prettify(y):
     a = dir(y)
@@ -63,10 +67,9 @@ def prettify(y):
     print('Type = {}'.format(type(y)))
     pp.pprint(reduced)
 
+
 def simple_prettify(y):
     pp.pprint(y)
-
-
 
 
 import time
@@ -74,12 +77,10 @@ import sys
 import datetime
 from decimal import Decimal
 
-
 import populus
 from populus.utils.accounts import is_account_locked
 from populus.utils.cli import request_account_unlock
 from populus import Project
-
 
 from eth_utils import to_wei
 from eth_utils import from_wei
@@ -93,15 +94,9 @@ from utils import get_libraries
 from utils import *
 # from ico.etherscan import verify_contract
 
-
 import utils_yaml_cache
 from utils_yaml_cache import *
 
-
-
-p = project = PROJECT = Project(project_dir="/home/abhishek.pandey/apps/code/githubs/TOKENS/chatq-tokens")
-
-
-
+p = project = PROJECT = Project(project_dir=PROJECT_DIR)
 
 print('end')
