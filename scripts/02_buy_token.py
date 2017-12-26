@@ -15,7 +15,8 @@ print('CONTRACT_NAME = {}'.format(CONTRACT_NAME))
 print('crowdlsale add = {}'.format(CROWDSALE_ADDRESS))
 
 value_to_buy = to_wei(0.000000001, 'ETHER')
-print('value_to_buy = {}'.format(value_to_buy))
+print('Value_to_buy = {}'.format(value_to_buy))
+print('Buyer = {}'.format(account))
 
 with p.get_chain(CHAIN) as chain:
     web3 = chain.web3

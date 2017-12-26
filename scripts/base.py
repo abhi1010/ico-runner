@@ -1,14 +1,17 @@
 # WARNING: TESTRPC VERSION SHOULD BE 4.1.3
 import logging
 
+_FILE_PATH = '/tmp/tokens.log'
 # logging.basicConfig(level=logging.DEBUG, format='%(relativeCreated)6d %(threadName)s %(message)s')
 logging.basicConfig(
     level=logging.DEBUG,
     format=
     '%(asctime)s %(filename)s/%(funcName)s %(name)-12s %(levelname)-8s %(message)s',
     datefmt='%m-%d %H:%M',
-    filename='/tmp/tokens.log',
-    filemode='w')
+    # filename=_FILE_PATH,
+    # filemode='w',
+    handlers=[logging.FileHandler(_FILE_PATH),
+              logging.StreamHandler()])
 
 print('start')
 # Which network we deployed our contract
@@ -48,8 +51,12 @@ if CHAIN == 'rinkeby':
 # horton values
 if CHAIN == 'horton':
     print('Setting horton chain values for accounts')
-    FIRST = OWNER = "0x54bc57802112ec0b3d2fc902d2b9715d260eeac0"
-    SECOND = '0x5e19f28296abd74e5bd23e241842ee6836ef5f5d'
+    a, b = [
+        "0x5ad94719b8d3614f16b46d2ef3a39b906afbc022",
+        "0x6fcbd2658693bba1c241b83b8ff0bcad207556fc"
+    ]
+    FIRST = OWNER = a
+    SECOND = b
 
 # FIRST = OWNER = "0x9f04eD4418526e527c577D02Af0CaCAC1128DAf7"
 

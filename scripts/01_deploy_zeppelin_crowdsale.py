@@ -3,8 +3,6 @@
 import base
 from base import *
 
-print('CACHE[FIELDNAME.CONTRACT] = {}'.format(CACHE[FIELDNAME.CONTRACT]))
-
 CONTRACT_NAME = 'Crowdsale'
 
 
@@ -31,7 +29,7 @@ args = [starts_at, freeze_ends_at, to_wei(10, 'ETHER'), address]
 with project.get_chain(chain) as c:
 
     web3 = c.web3
-    print("Web3 provider is", web3.currentProvider)
+    print("Web3 provider is", web3.providers[0])
     print("Deploy address is", address)
     if not address:
         sys.exit(
@@ -48,11 +46,11 @@ with project.get_chain(chain) as c:
     print("Deploying contracts with args={}; address={}".format(args, address))
     print('=' * 80)
     print()
-    # crowdsale, txhash = c.provider.get_or_deploy_contract(
+    # crowdsale, txhash = c.provider.deploy_contract(
     crowdsale, txhash = c.provider.get_or_deploy_contract(
         CONTRACT_NAME,
         deploy_transaction={
-            "from": address,
+            'from': address,
             # 'gas': 10000000,
             # 'gasLimit': 1000000000
         },
