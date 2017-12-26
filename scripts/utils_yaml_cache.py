@@ -2,25 +2,24 @@ import base
 from base import *
 import yaml
 
-from collections import namedtuple, defaultdict
+from collections import defaultdict
 
 CACHE = defaultdict(lambda: '')
 
 _FILE = 'status.yml'
+
 
 class _KEYS:
     def __init__(self, *args):
         print('args = {}'.format(args))
         for arg in args[0]:
             setattr(self, arg, arg)
+
+
 ALL_FIELDS = [
-    'CONTRACT',
-    'CROWDSALETOKEN',
-    'CROWDSALE',
-    'FLAT_PRICING_CONTRACT_ADDRESS',
-    'CROWDSALE_ADDRESS',
-    'FINALIZER_CONTRACT_ADDRESS'
-    ]
+    'CONTRACT', 'CROWDSALETOKEN', 'CROWDSALE', 'FLAT_PRICING_CONTRACT_ADDRESS',
+    'CROWDSALE_ADDRESS', 'FINALIZER_CONTRACT_ADDRESS'
+]
 
 FIELDNAME = _KEYS(ALL_FIELDS)
 
@@ -31,6 +30,7 @@ def load_cache():
         for key, value in x.items():
             CACHE[key] = value
         print('Loading Cache: = {}'.format(CACHE))
+
 
 load_cache()
 
